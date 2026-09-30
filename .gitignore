@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+
+# Autres
+Premier PINN/Premier_PINN_commentaires*
+Premier PINN/*.png
+Premier PINN/*.pt
+Rapport/
+Solution analytique/
+Vocabulaire.docx
+*.pdf
