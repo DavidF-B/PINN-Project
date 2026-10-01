@@ -12,9 +12,10 @@ wheels/
 
 # Autres
 Premier PINN/Premier_PINN_commentaires*
-Premier PINN/*.png
-Premier PINN/*.pt
 Rapport/
 Solution analytique/
 Vocabulaire.docx
 *.pdf
+*.png
+*.pt
+
