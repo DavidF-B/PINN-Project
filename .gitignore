@@ -14,7 +14,8 @@ wheels/
 Premier PINN/Premier_PINN_commentaires*
 Rapport/
 Solution analytique/
-Vocabulaire.docx
+bilan_vocabulaire_transport.docx
+Fiche torch.autograd.grad avec grad_outputs = ones_like.docx
 *.pdf
 *.png
 *.pt

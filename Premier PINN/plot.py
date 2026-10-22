@@ -25,7 +25,7 @@ class PINN(nn.Module):
 
 model = PINN().to(device)
 
-model.load_state_dict(torch.load(f"premier_pinn_eps={eps}.pt", weights_only=True))
+model.load_state_dict(torch.load(f"premier_pinn_eps_{eps}.pt", weights_only=True))
 model.eval()  
 
 print("Poids du modèle chargés avec succès !")
@@ -57,7 +57,7 @@ plt.ylabel("T(x)")
 plt.title(f"Comparaison PINN vs Solution Analytique (eps = {eps})")
 plt.legend()
 plt.grid(True, linestyle=":", alpha=0.6)
-plt.savefig(f"Comparaison PINN vs Solution Analytique_eps={eps}.png")
+plt.savefig(f"Comparaison_PINN_vs_Solution_Analytique_eps={eps}.png")
 plt.show()
 
 

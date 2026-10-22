@@ -93,8 +93,8 @@ for epoch in range(epochs):
 
 
 # --- SAUVEGARDE DES POIDS DU MODÈLE ---
-torch.save(model.state_dict(), f"premier_pinn_eps={eps}.pt")
-print(f"Modèle sauvegardé sous 'premier_pinn_eps={eps}.pt'")
+torch.save(model.state_dict(), f"premier_pinn_eps_{eps}.pt")
+print(f"Modèle sauvegardé sous 'premier_pinn_eps_{eps}.pt'")
 
 # --- TRACÉ DE LA LOSS ---
 plt.figure(figsize=(8, 5))
@@ -108,7 +108,7 @@ plt.ylabel("Loss (Échelle log)")
 plt.title("Évolution des pertes pendant l'entraînement du PINN")
 plt.legend()
 plt.grid(True, which="both", linestyle=":", alpha=0.6)
-plt.savefig(f"Evolution de la loss_eps={eps}.png")
+plt.savefig(f"Evolution_de_la_loss_eps={eps}.png")
 plt.show()
 
 

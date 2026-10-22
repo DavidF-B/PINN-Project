@@ -4,13 +4,13 @@ import torch
 from torch import nn
 
 
-
 # --- HYPER-PARAMETRES ---
-eps = 0.01
+eps = 0.001
 N_r = 500
 lr = 1e-3
 epochs = 10000
 shift = -1.0
+scale = 1000.0
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Utilisation du matériel : {device}")
@@ -21,6 +21,7 @@ class PINN(nn.Module):
     def __init__(self, shift = shift):
         super().__init__()
         self.shift = shift
+        self.scale = scale
         self.linear1 = nn.Linear(1,20)
         self.linear2 = nn.Linear(20,20)
         self.linear3 = nn.Linear(20,1)
@@ -28,7 +29,7 @@ class PINN(nn.Module):
 
     def forward(self,x):
 
-        x = x + self.shift
+        x = self.scale*(x + self.shift)
         x = self.tanh(self.linear1(x))
         x = self.tanh(self.linear2(x))
         x = self.linear3(x)
@@ -97,8 +98,8 @@ for epoch in range(epochs):
 
 
 # --- SAUVEGARDE DES POIDS DU MODÈLE ---
-torch.save(model.state_dict(), f"pinn_eps={eps}_shift={shift}.pt")
-print(f"Modèle sauvegardé sous 'premier_pinn_eps={eps}_shift={shift}.pt'")
+torch.save(model.state_dict(), f"pinn_eps_{eps}_shift_{shift}_scale_{scale}.pt")
+print(f"Modèle sauvegardé sous 'premier_pinn_eps={eps}_shift={shift}_scale={scale}.pt'")
 
 # --- TRACÉ DE LA LOSS ---
 plt.figure(figsize=(8, 5))
@@ -112,7 +113,7 @@ plt.ylabel("Loss (Échelle log)")
 plt.title("Évolution des pertes pendant l'entraînement du PINN")
 plt.legend()
 plt.grid(True, which="both", linestyle=":", alpha=0.6)
-plt.savefig(f"Evolution de la loss_eps={eps}_shift={shift}.png")
+plt.savefig(f"Evolution_de_la_loss_eps_{eps}_shift_{shift}_scale_{scale}.png")
 plt.show()
 
 
